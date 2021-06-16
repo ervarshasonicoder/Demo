@@ -1,6 +1,7 @@
 package  com.example.myapplication.restAPI
 
 import android.content.Context
+import com.engear.vansales.restAPI.ConnectivityInterceptor
 import com.example.myapplication.Utils.Constant.BASE_URL
 import com.example.myapplication.Utils.Constant.BASE_URL_2
 import com.google.gson.GsonBuilder

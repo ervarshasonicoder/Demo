@@ -1,9 +1,10 @@
-package  com.example.myapplication.restAPI
+
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import java.io.IOException
+
 
 object NetworkUtil {
     var TYPE_WIFI = 1
@@ -40,6 +41,17 @@ object NetworkUtil {
             }
         }
         return result
+    }
+
+    fun getConnectivityStatus(context: Context): Int {
+        val cm = context
+            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetworkInfo
+        if (null != activeNetwork) {
+            if (activeNetwork.type == ConnectivityManager.TYPE_WIFI) return TYPE_WIFI
+            if (activeNetwork.type == ConnectivityManager.TYPE_MOBILE) return TYPE_MOBILE
+        }
+        return TYPE_NOT_CONNECTED
     }
 
 
